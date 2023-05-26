@@ -12,11 +12,11 @@ fetch(FULL_URL)
     console.log("json: " + "%j" + rep);
     let length = sheet.table.rows.length;
     for(let i = 0;i<length;i++){
-        if (sheet.table.rows[i].c[1].v==null
-            || sheet.table.rows[i].c[2].v==null
-            || sheet.table.rows[i].c[3].v==null
-            || sheet.table.rows[i].c[4].v==null
-            || sheet.table.rows[i].c[5].v==null)
+        if (sheet.table.rows[i].c[1]==null
+            || sheet.table.rows[i].c[2]==null
+            || sheet.table.rows[i].c[3]==null
+            || sheet.table.rows[i].c[4]==null
+            || sheet.table.rows[i].c[5]==null)
             continue;
         data.push({ name: sheet.table.rows[i].c[1].v, 
                     version: sheet.table.rows[i].c[2].v, 
