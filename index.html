@@ -21,15 +21,17 @@
                 <h1>Unity Asset</h1>
                 <h5 class="mt-2">Use the search bar to quickly find asset!</h5>
             </div>
-            <!-- <div class="header-button text-center mt-3">
-                <button class="btn btn-primary">All</button>
-                <button class="btn btn-primary">ABC</button>
-                <button class="btn btn-primary">XYZ</button>
-            </div> -->
+            <div class="header-button text-center mt-3">
+                <button id="guideDownload" class="btn btn-primary">How to Download</button>
+                <button id="groupTelegram" class="btn btn-primary">Group Telegram</button>
+                <button id="donate" class="btn btn-primary">Dotate</button>
+                <!-- <button class="btn btn-primary">ABC</button> -->
+                <!-- <button class="btn btn-primary">XYZ</button> -->
+            </div>
             <div class="header-serach mt-3">
                 <div class="input-group mb-3">
                     <input id="textSearch" type="text" class="form-control" placeholder="" aria-label="Recipient's username"
-                        aria-describedby="basic-addon2">
+                        aria-describedby="basic-addon2" onkeydown="search()">
                     <div class="input-group-append">
                         <button id="search" class="btn btn-success" id="basic-addon2">search</button>
                     </div>

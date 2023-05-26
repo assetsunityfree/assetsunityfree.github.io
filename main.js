@@ -12,16 +12,16 @@ fetch(FULL_URL)
     console.log("json: " + "%j" + rep);
     let length = sheet.table.rows.length;
     for(let i = 0;i<length;i++){
-        if (sheet.table.rows[i].c[1]==null
-            || sheet.table.rows[i].c[2]==null
-            || sheet.table.rows[i].c[3]==null
-            || sheet.table.rows[i].c[4]==null
-            || sheet.table.rows[i].c[5]==null)
+        if (sheet.table.rows[i].c[1].v==null
+            || sheet.table.rows[i].c[2].v==null
+            || sheet.table.rows[i].c[3].v==null
+            || sheet.table.rows[i].c[4].v==null
+            || sheet.table.rows[i].c[5].v==null)
             continue;
         data.push({ name: sheet.table.rows[i].c[1].v, 
                     version: sheet.table.rows[i].c[2].v, 
                     link1: sheet.table.rows[i].c[3].v, 
-                    link2: sheet.table.rows[i].c[5].v })
+                    link2: sheet.table.rows[i].c[4].v.concat(sheet.table.rows[i].c[5].v)})
     }
     renderTable(data);
     })
@@ -35,7 +35,7 @@ let renderTable = function (arr) {
             <th scope="row">${index + 1}</th>
             <td><a href="${item.link1}" target="_blank">${item.name}</a></td>
             <td>${item.version}</td>
-            <td><a href="${item.link1}" target="_blank"button class="btn btn-info">Dowload</button></td>
+            <td><a href="${item.link2}" target="_blank"button class="btn btn-info">Dowload</button></td>
         </tr>
         `
     })
@@ -52,7 +52,13 @@ let searchByName = function (arr, name) {
     return item
 }
 
-$("#search").on("click", function () {
+function search() {
+    if(event.key === 'Enter') {
+        onSearchClick();       
+    }
+}
+
+function onSearchClick(){
     let textSearch = $("#textSearch").val();
     let item = searchByName(data, textSearch);
     if (textSearch == "") {
@@ -60,6 +66,13 @@ $("#search").on("click", function () {
     } else {
         renderTable(item);
     }
+}
+
+$("#search").on("click", function () {
+    onSearchClick();
 });
 
 
+$("#groupTelegram").on("click", function () {
+    window.open("https://t.me/+xRAlp3bWebUyMzQ1", "_blank");
+});
