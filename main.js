@@ -76,3 +76,11 @@ $("#search").on("click", function () {
 $("#groupTelegram").on("click", function () {
     window.open("https://t.me/+xRAlp3bWebUyMzQ1", "_blank");
 });
+
+$("#donate").on("click", function () {
+    window.open("/donate.html");
+});
+
+$("#guide").on("click", function () {
+    window.open("/guide.html");
+});
