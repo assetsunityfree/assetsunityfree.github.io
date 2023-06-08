@@ -44,12 +44,24 @@ let renderTable = function (arr) {
 
 let searchByName = function (arr, name) {
     let item = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i].name.toLowerCase().includes(name.toLowerCase())) {
-            item.push(arr[i])
-        }
-    }
-    return item
+
+    
+    let fuse = new Fuse(arr, {
+        keys: ['name']
+      })
+      
+      // 3. Now search!
+    item = fuse.search(name)
+
+    // for (let i = 0; i < arr.length; i++) {
+    //     if (arr[i].name.toLowerCase().includes(name.toLowerCase())) {
+    //         item.push(arr[i])
+    //     }
+    // }
+
+    console.log(item)
+
+    return item.map(x=>x.item)
 }
 
 function search() {
